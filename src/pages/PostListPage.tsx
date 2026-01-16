@@ -20,7 +20,7 @@ export default function PostListPage() {
             <Link to={`/post/${post.id}`}>
                 <h2>{post.title}</h2>
             </Link>
-            <h2>{post.content}</h2>
+            <h3>{post.content}</h3>
             <p>{new Date(post.created_at).toLocaleDateString()}</p>
           </li>
         ))}
