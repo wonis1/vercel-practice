@@ -18,11 +18,7 @@ export default function PostCreatePage() {
   });
 
   const errorMessage =
-    mutation.isError && mutation.error
-      ? typeof mutation.error === "string"
-        ? mutation.error
-        : JSON.stringify(mutation.error)
-      : null;
+    mutation.error instanceof Error ? mutation.error.message : null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +41,6 @@ export default function PostCreatePage() {
       />
       <button disabled={mutation.isPending}>Create</button>
       {mutation.isPending && <p>Creating...</p>}
-      {mutation.isSuccess && <p>Created.</p>}
       {errorMessage && <p>Failed: {errorMessage}</p>}
     </form>
   );
